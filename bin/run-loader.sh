@@ -2,7 +2,7 @@
 
 COMBINE_SCRIPT=./combine-fix-spx-files.sh
 CSV_FILE=spx-allyears.csv
-TABLE=stock_date
+TABLE=spx_raw
 
 
 if [[ ! -e "${COMBINE_SCRIPT}" ]]; then
@@ -28,11 +28,11 @@ pg-cmd.sh "DROP TABLE IF EXISTS ${TABLE}" > /dev/null 2>&1
 pg-cmd.sh "CREATE TABLE ${TABLE} (
 	sd_id       SERIAL,
 	mkt_date    DATE NOT NULL,
- 	symbol      VARCHAR(8) NOT NULL,
- 	open_price  NUMERIC(17,3) NOT NULL,
- 	high_price  NUMERIC(17,3) NOT NULL,
- 	low_price   NUMERIC(17,3) NOT NULL,
- 	close_price NUMERIC(17,3) NOT NULL
+ 	symbol      VARCHAR(12) NOT NULL,
+ 	open_price  NUMERIC(8,2) NOT NULL,
+ 	high_price  NUMERIC(8,2) NOT NULL,
+ 	low_price   NUMERIC(8,2) NOT NULL,
+ 	close_price NUMERIC(8,2) NOT NULL
 )"
 
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script combines & fixes raw CSV files and combines them into large one.
+
 SP_YEAR=1999
 START_INDEX=1
 LAST_CLOSE=1464.47 # THIS IS THE TRADING DAY BEFORE THE LAST TRADING DAY OF 1999.
@@ -33,10 +35,10 @@ while [[ $SP_YEAR -le 2025 ]]; do
 		fi
 
 		if [[ "${F_OPEN_DIFF_THAN_CLOSE}" == "FALSE" ]]; then
-			echo "${START_INDEX},${YEAR}-${MONTH}-${DAY},SPX,${LAST_CLOSE},${HIGH},${LOW},${CLOSE}" | tr -d '"'
+			echo "${START_INDEX},${YEAR}-${MONTH}-${DAY},SPX.RAW,${LAST_CLOSE},${HIGH},${LOW},${CLOSE}" | tr -d '"'
 			LAST_CLOSE=${CLOSE}
 		else
-			echo "${START_INDEX},${YEAR}-${MONTH}-${DAY},SPX,${OPEN},${HIGH},${LOW},${CLOSE}" | tr -d '"'
+			echo "${START_INDEX},${YEAR}-${MONTH}-${DAY},SPX.RAW,${OPEN},${HIGH},${LOW},${CLOSE}" | tr -d '"'
 		fi
 
 		((CTR--))
