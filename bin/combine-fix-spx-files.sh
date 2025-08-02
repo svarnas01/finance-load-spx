@@ -7,6 +7,15 @@ START_INDEX=1
 LAST_CLOSE=1464.47 # THIS IS THE TRADING DAY BEFORE THE LAST TRADING DAY OF 1999.
 F_OPEN_DIFF_THAN_CLOSE="FALSE"
 
+DATA_DIR="data-files"
+
+if [[ ! -d "${DATA_DIR}" ]]; then
+	echo -e "\nMissing data directory \"${DATA_DIR}\"\n"
+	exit 255
+fi
+
+cd "${DATA_DIR}"
+
 while [[ $SP_YEAR -le 2025 ]]; do
 	# echo "sp500-${SP_YEAR}.csv"
 
